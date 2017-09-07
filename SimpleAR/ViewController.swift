@@ -14,7 +14,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
-    var treeNode: SCNNode?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +22,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         
+        
+        
         // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+        sceneView.showsStatistics = false
         
         // Create a new scene
         let scene = SCNScene(named: "art.scnassets/tree.dae")!
-//        self.treeNode = scene.rootNode.childNode(withName: "treeObject", recursively: true)
-//        self.treeNode?.position = SCNVector3Make(0, 0, -1)
         
         
         // Set the scene to the view
@@ -68,7 +68,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let hitTransform = SCNMatrix4(hitFeature.worldTransform)
         let hitPosition = SCNVector3Make(hitTransform.m41, hitTransform.m42, hitTransform.m43)
-//        treeNode?.position = hitPosition
+        
         let scene = SCNScene(named: "art.scnassets/tree.dae")!
         let treeClone = scene.rootNode.childNode(withName: "treeObject", recursively: true)!
         treeClone.position = hitPosition
